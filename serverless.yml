@@ -48,7 +48,7 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - "Fn::GetAtt": [ LocationsTable, NotesTable, Arn ]
+        - "Fn::GetAtt": [ LocationsTable, Arn ]
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
@@ -66,56 +66,71 @@ functions:
           cors: true
           authorizer: aws_iam
 
-  get:
-    # Defines an HTTP API endpoint that calls the main function in get.js
-    # - path: url path is /notes/{id}
-    # - method: GET request
-    handler: get.main
+  # Defines an HTTP API endpoint that calls the main function in createLocation.js
+  # - path: url path is /locations
+  # - method: POST request
+  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
+  #     domain api call
+  # - authorizer: authenticate using the AWS IAM role
+  createLocation:
+    handler: createLocation.main
     events:
       - http:
-          path: notes/{id}
-          method: get
+          path: locations
+          method: post
           cors: true
           authorizer: aws_iam
 
-  list:
-    # Defines an HTTP API endpoint that calls the main function in list.js
-    # - path: url path is /notes
-    # - method: GET request
-    handler: list.main
-    events:
-      - http:
-          path: notes
-          method: get
-          cors: true
-          authorizer: aws_iam
+  # get:
+  #   # Defines an HTTP API endpoint that calls the main function in get.js
+  #   # - path: url path is /notes/{id}
+  #   # - method: GET request
+  #   handler: get.main
+  #   events:
+  #     - http:
+  #         path: notes/{id}
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
 
-  update:
-    # Defines an HTTP API endpoint that calls the main function in update.js
-    # - path: url path is /notes/{id}
-    # - method: PUT request
-    handler: update.main
-    events:
-      - http:
-          path: notes/{id}
-          method: put
-          cors: true
-          authorizer: aws_iam
+  # list:
+  #   # Defines an HTTP API endpoint that calls the main function in list.js
+  #   # - path: url path is /notes
+  #   # - method: GET request
+  #   handler: list.main
+  #   events:
+  #     - http:
+  #         path: notes
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
 
-  delete:
-    # Defines an HTTP API endpoint that calls the main function in delete.js
-    # - path: url path is /notes/{id}
-    # - method: DELETE request
-    handler: delete.main
-    events:
-      - http:
-          path: notes/{id}
-          method: delete
-          cors: true
-          authorizer: aws_iam
+  # update:
+  #   # Defines an HTTP API endpoint that calls the main function in update.js
+  #   # - path: url path is /notes/{id}
+  #   # - method: PUT request
+  #   handler: update.main
+  #   events:
+  #     - http:
+  #         path: notes/{id}
+  #         method: put
+  #         cors: true
+  #         authorizer: aws_iam
+
+  # delete:
+  #   # Defines an HTTP API endpoint that calls the main function in delete.js
+  #   # - path: url path is /notes/{id}
+  #   # - method: DELETE request
+  #   handler: delete.main
+  #   events:
+  #     - http:
+  #         path: notes/{id}
+  #         method: delete
+  #         cors: true
+  #         authorizer: aws_iam
 
 resources:
   - ${file(resources/dynamodb-table.yml)}
   - ${file(resources/s3-bucket.yml)}
   - ${file(resources/cognito-user-pool.yml)}
-  - ${file(resources/cognito-identity-poo.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
