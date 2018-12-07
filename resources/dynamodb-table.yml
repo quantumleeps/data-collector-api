@@ -2,7 +2,7 @@ Resources:
   NotesTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}
+      TableName: ${self:custom.noteTableName}
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
@@ -21,7 +21,7 @@ Resources:
   LocationsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}
+      TableName: ${self:custom.locationTableName}
       AttributeDefinitions:
         - AttributeName: name
           AttributeType: S
