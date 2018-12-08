@@ -14,11 +14,12 @@ export async function main(event, context) {
         },
         // 'UpdateExpression' defines the attributes to be updated
         // 'ExpressionAttributeValues' defines the value in the update expression
-        UpdateExpression: "SET locationName = :locationName, country = :country, description = :description",
+        UpdateExpression: "SET locationName = :locationName, country = :country, description = :description, modifiedAt = :modifiedAt",
         ExpressionAttributeValues: {
             ":locationName": data.locationName || null,
             ":country": data.country || null,
-            ":description": data.description || null
+            ":description": data.description || null,
+            ":modifiedAt": Date.now()
         },
         ReturnValues: "ALL_NEW"
     };
