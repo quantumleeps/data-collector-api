@@ -73,7 +73,7 @@ functions:
   #     domain api call
   # - authorizer: authenticate using the AWS IAM role
   createLocation:
-    handler: createLocation.main
+    handler: locations/createLocation.main
     events:
       - http:
           path: locations
