@@ -7,7 +7,7 @@ export async function main(event, context) {
     const params = {
         TableName: process.env.locationTableName,
         Item: {
-            name: data.name,
+            locationName: data.locationName,
             id: uuid.v1(),
             creatorId: event.requestContext.identity.cognitoIdentityId,
             country: data.country,

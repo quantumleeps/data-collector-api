@@ -1,0 +1,11 @@
+{
+    "body": "{\"country\":\"Poopsville4\",\"locationName\":\"New Jersey Waterworks\",\"description\":\"a newly made one\"}",
+        "pathParameters": {
+        "id": "858b48e0-fb30-11e8-8b8d-1717a4e67c1c"
+    },
+    "requestContext": {
+        "identity": {
+            "cognitoIdentityId": "Dan12345"
+        }
+    }
+}

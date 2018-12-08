@@ -1,5 +1,5 @@
 {
-    "body": "{\"name\": \"Windsor\", \"country\": \"Bahamas\", \"description\": \"the recent one\"}",
+    "body": "{\"locationName\": \"Windsor\", \"country\": \"Bahamas\", \"description\": \"the recent one\"}",
     "requestContext": {
         "identity": {
             "cognitoIdentityId": "Dan12345"
