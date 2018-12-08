@@ -85,7 +85,7 @@ functions:
     # Defines an HTTP API endpoint that calls the main function in listLocations.js
     # - path: url path is /locations
     # - method: GET request
-    handler: locations/listLocation.main
+    handler: locations/listLocations.main
     events:
       - http:
           path: locations
