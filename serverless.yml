@@ -56,23 +56,23 @@ provider:
         - dynamodb:DescribeTable
         - dynamodb:Query
         - dynamodb:Scan
-      Resource: "arn:aws:dynamodb:us-east-1:326696086447:table"
+      Resource: "arn:aws:dynamodb:us-east-1:326696086447:table/country-table"
 
 functions:
-  # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /notes
-  # - method: POST request
-  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
-  #     domain api call
-  # - authorizer: authenticate using the AWS IAM role
-  create:
-    handler: create.main
-    events:
-      - http:
-          path: notes
-          method: post
-          cors: true
-          authorizer: aws_iam
+  # # Defines an HTTP API endpoint that calls the main function in create.js
+  # # - path: url path is /notes
+  # # - method: POST request
+  # # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
+  # #     domain api call
+  # # - authorizer: authenticate using the AWS IAM role
+  # create:
+  #   handler: create.main
+  #   events:
+  #     - http:
+  #         path: notes
+  #         method: post
+  #         cors: true
+  #         authorizer: aws_iam
 
 
   listCountries:
@@ -90,14 +90,14 @@ functions:
   # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
   #     domain api call
   # - authorizer: authenticate using the AWS IAM role
-  createLocation:
-    handler: locations/createLocation.main
-    events:
-      - http:
-          path: locations
-          method: post
-          cors: true
-          authorizer: aws_iam
+  # createLocation:
+  #   handler: locations/createLocation.main
+  #   events:
+  #     - http:
+  #         path: locations
+  #         method: post
+  #         cors: true
+  #         authorizer: aws_iam
 
   listAllLocations:
     # Defines an HTTP API endpoint that calls the main function in listAllLocations.js
@@ -111,54 +111,54 @@ functions:
           cors: true
           authorizer: aws_iam
 
-  listLocations:
-    # Defines an HTTP API endpoint that calls the main function in listLocations.js
-    # - path: url path is /locations/{countryId}
-    # - method: GET request
-    handler: locations/listLocations.main
-    events:
-      - http:
-          path: locations/{countryId}
-          method: get
-          cors: true
-          authorizer: aws_iam
+  # listLocations:
+  #   # Defines an HTTP API endpoint that calls the main function in listLocations.js
+  #   # - path: url path is /locations/{countryId}
+  #   # - method: GET request
+  #   handler: locations/listLocations.main
+  #   events:
+  #     - http:
+  #         path: locations/{countryId}
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
 
-  getLocation:
-    # Defines an HTTP API endpoint that calls the main function in getLocation.js
-    # - path: url path is /location/{id}
-    # - method: GET request
-    handler: locations/getLocation.main
-    events:
-      - http:
-          path: locations/{id}
-          method: get
-          cors: true
-          authorizer: aws_iam
+  # getLocation:
+  #   # Defines an HTTP API endpoint that calls the main function in getLocation.js
+  #   # - path: url path is /location/{id}
+  #   # - method: GET request
+  #   handler: locations/getLocation.main
+  #   events:
+  #     - http:
+  #         path: locations/{countryId}/{id}
+  #         method: get
+  #         cors: true
+  #         authorizer: aws_iam
 
 
-  updateLocation:
-    # Defines an HTTP API endpoint that calls the main function in updateLocation.js
-    # - path: url path is /locations/{id}
-    # - method: PUT request
-    handler: locations/updateLocation.main
-    events:
-      - http:
-          path: locations/{id}
-          method: put
-          cors: true
-          authorizer: aws_iam
+  # updateLocation:
+  #   # Defines an HTTP API endpoint that calls the main function in updateLocation.js
+  #   # - path: url path is /locations/{id}
+  #   # - method: PUT request
+  #   handler: locations/updateLocation.main
+  #   events:
+  #     - http:
+  #         path: locations/{countryId}/{id}
+  #         method: put
+  #         cors: true
+  #         authorizer: aws_iam
 
-  deleteLocation:
-    # Defines an HTTP API endpoint that calls the main function in deleteLocation.js
-    # - path: url path is /locations/{id}
-    # - method: DELETE request
-    handler: locations/deleteLocation.main
-    events:
-      - http:
-          path: locations/{id}
-          method: delete
-          cors: true
-          authorizer: aws_iam
+  # deleteLocation:
+  #   # Defines an HTTP API endpoint that calls the main function in deleteLocation.js
+  #   # - path: url path is /locations/{id}
+  #   # - method: DELETE request
+  #   handler: locations/deleteLocation.main
+  #   events:
+  #     - http:
+  #         path: locations/{countryId}/{id}
+  #         method: delete
+  #         cors: true
+  #         authorizer: aws_iam
   # get:
   #   # Defines an HTTP API endpoint that calls the main function in get.js
   #   # - path: url path is /notes/{id}
