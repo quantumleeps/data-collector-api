@@ -5,14 +5,14 @@ Resources:
     Properties:
       TableName: ${self:custom.locationTableName}
       AttributeDefinitions:
-        - AttributeName: id
+        - AttributeName: countryId
           AttributeType: S
-        - AttributeName: creatorId
+        - AttributeName: locationId
           AttributeType: S
       KeySchema:
-        - AttributeName: id
+        - AttributeName: countryId
           KeyType: HASH
-        - AttributeName: creatorId
+        - AttributeName: locationId
           KeyType: RANGE        
       # Set the capacity based on the stage
       ProvisionedThroughput:

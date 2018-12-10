@@ -38,6 +38,7 @@ provider:
     locationTableName: ${self:custom.locationTableName}
 
   iamRoleStatements:
+    # Allow access to the Locations table created within this doc
     - Effect: Allow
       Action:
         - dynamodb:DescribeTable
@@ -49,6 +50,13 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - "Fn::GetAtt": [ LocationsTable, Arn ]
+    # Allow access to the countries table. Only read access
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource: "arn:aws:dynamodb:us-east-1:326696086447:table"
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
@@ -63,6 +71,16 @@ functions:
       - http:
           path: notes
           method: post
+          cors: true
+          authorizer: aws_iam
+
+
+  getCountries:
+    handler: getCountries.main
+    events:
+      - http:
+          path: countries
+          method: get
           cors: true
           authorizer: aws_iam
 
