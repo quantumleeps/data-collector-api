@@ -90,14 +90,14 @@ functions:
   # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
   #     domain api call
   # - authorizer: authenticate using the AWS IAM role
-  # createLocation:
-  #   handler: locations/createLocation.main
-  #   events:
-  #     - http:
-  #         path: locations
-  #         method: post
-  #         cors: true
-  #         authorizer: aws_iam
+  createLocation:
+    handler: locations/createLocation.main
+    events:
+      - http:
+          path: locations
+          method: post
+          cors: true
+          authorizer: aws_iam
 
   listAllLocations:
     # Defines an HTTP API endpoint that calls the main function in listAllLocations.js

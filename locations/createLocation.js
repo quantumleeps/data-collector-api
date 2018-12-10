@@ -8,11 +8,11 @@ export async function main(event, context) {
         TableName: process.env.locationTableName,
         Item: {
             locationName: data.locationName,
-            id: uuid.v1(),
+            locationId: uuid.v1(),
             creatorId: event.requestContext.identity.cognitoIdentityId,
-            country: data.country,
+            countryId: data.countryId,
             description: data.description,
-            equipmentNodeTree: [null],
+            // equipmentNodeTree: [null],
             createdAt: Date.now(),
             modifiedAt: Date.now()
         }
