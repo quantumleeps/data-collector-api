@@ -4,13 +4,10 @@ import { success, failure } from "../libs/response-lib";
 export async function main(event, context) {
   const params = {
     TableName: process.env.locationTableName,
-    Key: {
-      countryId: event.pathParameters.countryId,
-    }
   };
 
   try {
-    const result = await dynamoDbLib.call("query", params);
+    const result = await dynamoDbLib.call("scan", params);
     // Return the matching list of items in response body
     return success(result.Items);
   } catch (e) {

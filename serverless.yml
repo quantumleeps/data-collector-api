@@ -75,8 +75,8 @@ functions:
           authorizer: aws_iam
 
 
-  getCountries:
-    handler: getCountries.main
+  listCountries:
+    handler: listCountries.main
     events:
       - http:
           path: countries
@@ -99,14 +99,26 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  listAllLocations:
+    # Defines an HTTP API endpoint that calls the main function in listAllLocations.js
+    # - path: url path is /locations
+    # - method: GET request
+    handler: locations/listAllLocations.main
+    events:
+      - http:
+          path: locations
+          method: get
+          cors: true
+          authorizer: aws_iam
+
   listLocations:
     # Defines an HTTP API endpoint that calls the main function in listLocations.js
-    # - path: url path is /locations
+    # - path: url path is /locations/{countryId}
     # - method: GET request
     handler: locations/listLocations.main
     events:
       - http:
-          path: locations
+          path: locations/{countryId}
           method: get
           cors: true
           authorizer: aws_iam

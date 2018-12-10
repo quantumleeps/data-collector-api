@@ -1,7 +1,5 @@
 {
-    "requestContext": {
-        "identity": {
-            "cognitoIdentityId": "Dan12345"
-        }
+    "pathParameters": {
+      "countryId": "1"
     }
 }
