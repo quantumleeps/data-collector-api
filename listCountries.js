@@ -15,6 +15,7 @@ export async function main(event, context) {
       return failure({ status: false, error: "No items found." });
     }
   } catch (e) {
+    console.log
     return failure({ status: false });
   }
 }
