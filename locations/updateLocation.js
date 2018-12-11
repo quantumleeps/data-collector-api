@@ -9,15 +9,14 @@ export async function main(event, context) {
         // - 'userId': Identity Pool identity id of the authenticated user
         // - 'noteId': path parameter
         Key: {
-            id: event.pathParameters.id,
-            creatorId: event.requestContext.identity.cognitoIdentityId
+            countryId: event.pathParameters.countryId,
+            locationId: event.pathParameters.locationId
         },
         // 'UpdateExpression' defines the attributes to be updated
         // 'ExpressionAttributeValues' defines the value in the update expression
-        UpdateExpression: "SET locationName = :locationName, country = :country, description = :description, modifiedAt = :modifiedAt",
+        UpdateExpression: "SET locationName = :locationName, description = :description, modifiedAt = :modifiedAt",
         ExpressionAttributeValues: {
             ":locationName": data.locationName || null,
-            ":country": data.country || null,
             ":description": data.description || null,
             ":modifiedAt": Date.now()
         },

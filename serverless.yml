@@ -136,17 +136,17 @@ functions:
           authorizer: aws_iam
 
 
-  # updateLocation:
-  #   # Defines an HTTP API endpoint that calls the main function in updateLocation.js
-  #   # - path: url path is /locations/{id}
-  #   # - method: PUT request
-  #   handler: locations/updateLocation.main
-  #   events:
-  #     - http:
-  #         path: locations/{countryId}/{id}
-  #         method: put
-  #         cors: true
-  #         authorizer: aws_iam
+  updateLocation:
+    # Defines an HTTP API endpoint that calls the main function in updateLocation.js
+    # - path: url path is /locations/{countryId}/{locationId}
+    # - method: PUT request
+    handler: locations/updateLocation.main
+    events:
+      - http:
+          path: locations/{countryId}/{locationId}
+          method: put
+          cors: true
+          authorizer: aws_iam
 
   deleteLocation:
     # Defines an HTTP API endpoint that calls the main function in deleteLocation.js
