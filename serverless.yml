@@ -148,17 +148,17 @@ functions:
   #         cors: true
   #         authorizer: aws_iam
 
-  # deleteLocation:
-  #   # Defines an HTTP API endpoint that calls the main function in deleteLocation.js
-  #   # - path: url path is /locations/{id}
-  #   # - method: DELETE request
-  #   handler: locations/deleteLocation.main
-  #   events:
-  #     - http:
-  #         path: locations/{countryId}/{id}
-  #         method: delete
-  #         cors: true
-  #         authorizer: aws_iam
+  deleteLocation:
+    # Defines an HTTP API endpoint that calls the main function in deleteLocation.js
+    # - path: url path is /locations/{id}
+    # - method: DELETE request
+    handler: locations/deleteLocation.main
+    events:
+      - http:
+          path: locations/{countryId}/{locationId}
+          method: delete
+          cors: true
+          authorizer: aws_iam
   # get:
   #   # Defines an HTTP API endpoint that calls the main function in get.js
   #   # - path: url path is /notes/{id}
