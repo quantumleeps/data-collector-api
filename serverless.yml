@@ -123,17 +123,17 @@ functions:
           cors: true
           authorizer: aws_iam
 
-  # getLocation:
-  #   # Defines an HTTP API endpoint that calls the main function in getLocation.js
-  #   # - path: url path is /location/{id}
-  #   # - method: GET request
-  #   handler: locations/getLocation.main
-  #   events:
-  #     - http:
-  #         path: locations/{countryId}/{id}
-  #         method: get
-  #         cors: true
-  #         authorizer: aws_iam
+  getLocation:
+    # Defines an HTTP API endpoint that calls the main function in getLocation.js
+    # - path: url path is /location/{id}
+    # - method: GET request
+    handler: locations/getLocation.main
+    events:
+      - http:
+          path: locations/{countryId}/{locationId}
+          method: get
+          cors: true
+          authorizer: aws_iam
 
 
   # updateLocation:
